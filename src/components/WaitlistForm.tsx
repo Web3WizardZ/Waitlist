@@ -1,4 +1,6 @@
-"use client"; // Add this line at the top
+/* eslint-disable react/no-unescaped-entities */
+
+"use client";
 
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
@@ -91,7 +93,7 @@ const WaitlistForm: React.FC = () => {
       </Button>
 
       <div className="mt-6 text-center text-sm text-gray-600">
-      <p>We&rsquo;ll never share your information with anyone else.</p>
+      <p>We’ll never share your information with anyone else.</p>
       </div>
 
       {/* Add Twitter Follow Option */}
