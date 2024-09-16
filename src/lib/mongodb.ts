@@ -1,4 +1,4 @@
-// lib/mongodb.ts
+// src/lib/mongodb.ts
 import { MongoClient } from 'mongodb';
 
 let client: MongoClient;
