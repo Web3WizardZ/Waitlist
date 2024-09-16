@@ -14,7 +14,7 @@ export async function POST(request: Request) {
 
     // Use the persistent MongoDB connection
     const client = await clientPromise;
-    const db = client.db('your-database-name');
+    const db = client.db('Cluster0');
     const collection = db.collection('waitlist');
 
     const data = {
