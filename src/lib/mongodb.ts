@@ -1,14 +1,11 @@
 // src/lib/mongodb.ts
 import { MongoClient } from 'mongodb';
 
-let client: MongoClient;
-let clientPromise: Promise<MongoClient>;
+const clientPromise: Promise<MongoClient> = global._mongoClientPromise || new MongoClient(process.env.MONGODB_URI as string).connect();
 
 if (!global._mongoClientPromise) {
-  client = new MongoClient(process.env.MONGODB_URI as string); // Ensure MONGODB_URI is defined
-  global._mongoClientPromise = client.connect();
+  global._mongoClientPromise = clientPromise;
 }
 
-clientPromise = global._mongoClientPromise;
-
-export default clientPromise;
+// Named export
+export { clientPromise };
