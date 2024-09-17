@@ -1,9 +1,11 @@
 // src/app/api/waitlist/route.ts
 import { NextResponse } from 'next/server';
-import { clientPromise } from '@/lib/mongodb';  // Named import
+import clientPromise from '@/lib/mongodb';
 
 export async function POST(request: Request) {
   try {
+    console.log('Received POST request');
+    
     const { name, email, message } = await request.json();
 
     if (!name || !email) {
@@ -22,10 +24,12 @@ export async function POST(request: Request) {
     };
 
     await collection.insertOne(data);
-
+    
+    console.log('Data inserted successfully');
+    
     return NextResponse.json({ message: 'Successfully added to waitlist' });
   } catch (error) {
-    console.error('Error writing to waitlist:', error);
+    console.error('Error:', error);  // Log the error to identify the issue
     return NextResponse.json({ error: 'Failed to add to waitlist' }, { status: 500 });
   }
 }
